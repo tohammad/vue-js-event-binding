@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -27,6 +25,10 @@
         <h1 v-cloak>{{ message}}</h1>
         <h1 v-bind:title="title">{{ message}}</h1>
         <input type="text" v-model="message" />
+         <button  v-on:click="countUp" class="btn btn-primary">Count Up</button>
+          <button  @click="countDown" class="btn btn-primary">Count Down</button>
+         <h1> Count : {{ count }}</h1>
+        
         <img :src="url" v-bind:title="title">{{ message}}</img>
         <h1>ToDo List</h1>
         <ul>
@@ -54,6 +56,7 @@
                 intro: "Welcome to vue.js <small> it's great!!!</small>",
                 url: "http://vuejs.org/images/logo.png",
                 viewed: true,
+                count: 0,
                 todos: [
                     {
                         text: "c"
@@ -64,8 +67,16 @@
                     {
                         text: "c#"
                     }
-                ]
-            }
+                ],
+            },
+            methods: {
+                    countUp: function () {
+                        this.count +=1
+                    },
+                     countDown: function () {
+                        this.count -=1
+                    }
+                }
         }
     )
 
